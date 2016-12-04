@@ -41,13 +41,15 @@ export default class Row extends Component {
             </Text>
           </View>
 
-          <View style={styles.contentContainer}>
-            <Text
-              style={styles.content}
-              numberOfLines={4}
-              >{data.content}
-            </Text>
-          </View>
+          {data.content.length > 0 ? (
+            <View style={styles.contentContainer}>
+              <Text
+                style={styles.content}
+                numberOfLines={4}
+                >{data.content}
+              </Text>
+            </View>
+          ) : null}
         </View>
 
         <View style={styles.infoContainer}>
