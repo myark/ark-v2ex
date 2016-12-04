@@ -27,7 +27,7 @@ export default class App extends Component {
   componentDidMount() {
     const { setBottomBarStyle } = this.props;
     setBottomBarStyle && setBottomBarStyle({
-      backgroundColor: '#EEE',
+      backgroundColor: 'rgba(238,238,238,0.8)',
       color: '#333',
       borderColor: '#DDD',
     });
