@@ -102,7 +102,8 @@ const styles = StyleSheet.create({
     borderRadius: 25,
     borderWidth: 1,
     top: -25,
-    borderColor: '#DDD'
+    borderColor: '#DDD',
+    backgroundColor: '#FFF'
   },
 
   titleContainer: {
