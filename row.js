@@ -113,7 +113,7 @@ const styles = StyleSheet.create({
 
   contentContainer: {
     padding: 5,
-    backgroundColor: 'rgba(238, 238, 238, 0.1)'
+    backgroundColor: 'rgba(238, 238, 238, 0.4)'
   },
 
   infoContainer: {
@@ -122,7 +122,7 @@ const styles = StyleSheet.create({
     padding: 5,
     borderTopWidth: 0.5,
     borderTopColor: '#EEE',
-    backgroundColor: 'rgba(238,238,238,0.3)',
+    backgroundColor: 'rgba(238,238,238,0.8)',
   },
 
   title: {
