@@ -23,4 +23,13 @@ export default class App extends Component {
       />
     )
   }
+
+  componentDidMount() {
+    const { setBottomBarStyle } = this.props;
+    setBottomBarStyle && setBottomBarStyle({
+      backgroundColor: '#EEE',
+      color: '#333',
+      borderColor: '#DDD',
+    });
+  }
 }
