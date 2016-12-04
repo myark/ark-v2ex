@@ -7,6 +7,10 @@ import {
   RefreshControl,
 } from 'react-native';
 
+import {
+  TitleBar
+} from 'ark-ui';
+
 import Row from './row';
 
 export default class Home extends Component {
@@ -21,21 +25,29 @@ export default class Home extends Component {
 
   render() {
     return (
-      <ListView
-        style={styles.container}
-        initialListSize={20}
-        enableEmptySections={true}
-        dataSource={this.ds.cloneWithRows(this.state.data)}
-        renderRow={(data) => (
-          <Row data={data} />
-        )}
-        refreshControl={(
-          <RefreshControl
-            refreshing={this.state.refreshing}
-            onRefresh={this._onRefresh.bind(this)}
-          />
-        )}
-      />
+      <View style={{flex:1}}>
+        <TitleBar
+          title="V2EX"
+          titleColor="#000"
+          barStyle="dark-content"
+          backgroundColor="#FFF"
+        />
+        <ListView
+          style={styles.container}
+          initialListSize={20}
+          enableEmptySections={true}
+          dataSource={this.ds.cloneWithRows(this.state.data)}
+          renderRow={(data) => (
+            <Row data={data} />
+          )}
+          refreshControl={(
+            <RefreshControl
+              refreshing={this.state.refreshing}
+              onRefresh={this._onRefresh.bind(this)}
+            />
+          )}
+        />
+      </View>
     )
   }
 

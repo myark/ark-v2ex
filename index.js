@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {
   View,
   Text,
+  Navigator,
   NavigatorIOS,
 } from 'react-native';
 
@@ -13,13 +14,29 @@ export default class App extends Component {
   }
   render() {
     return (
-      <NavigatorIOS
+      <Navigator
         initialRoute={{
+          name: 'Home',
           component: Home,
-          title: 'v2ex',
-          passProps: this.props
+          params: {}
         }}
-        style={{flex: 1}}
+        configureScene={(route, routeStack) => {
+          return Navigator.SceneConfigs.FloatFromBottom;
+          // return {
+          //   ...Navigator.SceneConfigs.FloatFromBottom,
+          //   gestures: {
+          //     pop: {
+          //       ...Navigator.SceneConfigs.FloatFromBottom.gestures.pop,
+          //       snapVelocity: 8,
+          //       edgeHitWidth: 66, // 滑动区域高度
+          //     }
+          //   }
+          // }
+        }}
+        renderScene={(route, navigator) => {
+          let Cmp = route.component;
+          return <Cmp {...route.params} navigator={navigator} />;
+        }}
       />
     )
   }
