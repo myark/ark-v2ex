@@ -38,7 +38,7 @@ export default class Home extends Component {
           enableEmptySections={true}
           dataSource={this.ds.cloneWithRows(this.state.data)}
           renderRow={(data) => (
-            <Row data={data} />
+            <Row data={data} navigator={this.props.navigator} />
           )}
           refreshControl={(
             <RefreshControl
@@ -59,6 +59,13 @@ export default class Home extends Component {
     this.setState({
       refreshing: true
     });
+    setTimeout(() => {
+      this.setState({
+        data: require('./latest.json'),
+        refreshing: false
+      })
+    }, 1000);
+    return;
     fetch('https://www.v2ex.com/api/topics/latest.json')
       .then((ret) => ret.json())
       .then((data) => {

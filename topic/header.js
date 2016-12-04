@@ -4,14 +4,11 @@ import {
   Text,
   Image,
   StyleSheet,
-  TouchableOpacity
+  TouchableOpacity,
 } from 'react-native';
 
 import Icon from 'react-native-vector-icons/Ionicons';
-
-import Topic from './topic/';
-
-export default class Row extends Component {
+export default class Header extends Component {
   constructor(props) {
     super(props);
   }
@@ -19,9 +16,7 @@ export default class Row extends Component {
   render() {
     const { data } = this.props;
     return (
-      <TouchableOpacity
-        onPress={this._viewTopic.bind(this)}
-        style={styles.container}>
+      <View style={styles.container}>
         <TouchableOpacity
           onPress={() => {}}
           style={styles.avatarContainer}>
@@ -34,24 +29,12 @@ export default class Row extends Component {
           />
         </TouchableOpacity>
 
-        <View style={styles.centerContainer}>
-          <View style={styles.titleContainer}>
-            <Text
-              style={styles.title}
-              numberOfLines={2}
-              >{data.title}
-            </Text>
-          </View>
+        <View style={styles.titleContainer}>
+          <Text style={styles.title}>{data['title']}</Text>
+        </View>
 
-          {data.content.length > 0 ? (
-            <View style={styles.contentContainer}>
-              <Text
-                style={styles.content}
-                numberOfLines={4}
-                >{data.content}
-              </Text>
-            </View>
-          ) : null}
+        <View style={styles.contentContainer}>
+          <Text style={styles.content}>{data['content']}</Text>
         </View>
 
         <View style={styles.infoContainer}>
@@ -70,29 +53,19 @@ export default class Row extends Component {
             <Text> {new Date(parseInt(data['created'] + '000')).toISOString().substr(5, 11).replace('-', '/').replace('T',' ')}</Text>
           </Text>
         </View>
-      </TouchableOpacity>
+      </View>
     )
-  }
-
-  _viewTopic() {
-    const { data, navigator } = this.props;
-    navigator.push({
-      name: 'Topic',
-      component: Topic,
-      params: {
-        data
-      }
-    })
   }
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    // flex: 1,
+    minHeight: 100,
     flexDirection: 'column',
     marginLeft: 6,
     marginRight: 6,
-    marginTop: 28,
+    marginTop: 50,
     marginBottom: 3,
     borderWidth: 0.5,
     borderColor: '#DDD',
@@ -100,15 +73,13 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFF',
   },
   avatarContainer: {
-    flex: 1,
+    // flex: 1,
+    // height: 25,
+    marginBottom: -25,
     alignItems: 'center',
     justifyContent: 'center',
-    marginBottom: -25,
+    // backgroundColor: 'red'
   },
-  centerContainer: {
-    flex: 1,
-  },
-
   avatar: {
     width: 50,
     height: 50,
@@ -129,7 +100,6 @@ const styles = StyleSheet.create({
     padding: 5,
     backgroundColor: 'rgba(238, 238, 238, 0.4)'
   },
-
   infoContainer: {
     flex: 1,
     flexDirection: 'row',
@@ -138,7 +108,6 @@ const styles = StyleSheet.create({
     borderTopColor: '#EEE',
     backgroundColor: 'rgba(238,238,238,0.8)',
   },
-
   title: {
     fontWeight: 'bold',
     fontSize: 16,
@@ -153,5 +122,5 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: '#999',
     paddingRight: 2,
-  }
+  },
 })
