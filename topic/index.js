@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 
 import Header from './header';
+import Replies from './replies';
 
 export default class Topic extends Component {
   constructor(props) {
@@ -19,9 +20,7 @@ export default class Topic extends Component {
     return (
       <ScrollView  style={styles.container}>
         <Header {...this.props} />
-        <View style={{flex:1}}>
-          <Text>body</Text>
-        </View>
+        <Replies {...this.props} />
       </ScrollView >
     )
   }

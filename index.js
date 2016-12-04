@@ -21,17 +21,17 @@ export default class App extends Component {
           params: {}
         }}
         configureScene={(route, routeStack) => {
-          return Navigator.SceneConfigs.FloatFromBottom;
-          // return {
-          //   ...Navigator.SceneConfigs.FloatFromBottom,
-          //   gestures: {
-          //     pop: {
-          //       ...Navigator.SceneConfigs.FloatFromBottom.gestures.pop,
-          //       snapVelocity: 8,
-          //       edgeHitWidth: 66, // 滑动区域高度
-          //     }
-          //   }
-          // }
+          // return Navigator.SceneConfigs.FloatFromBottom;
+          return {
+            ...Navigator.SceneConfigs.FloatFromBottom,
+            gestures: {
+              pop: {
+                ...Navigator.SceneConfigs.FloatFromBottom.gestures.pop,
+                snapVelocity: 8,
+                edgeHitWidth: 66, // 滑动区域高度
+              }
+            }
+          }
         }}
         renderScene={(route, navigator) => {
           let Cmp = route.component;
