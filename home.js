@@ -7,10 +7,6 @@ import {
   RefreshControl,
 } from 'react-native';
 
-import {
-  TitleBar
-} from 'ark-ui';
-
 import Row from './row';
 
 export default class Home extends Component {
@@ -26,12 +22,9 @@ export default class Home extends Component {
   render() {
     return (
       <View style={{flex:1}}>
-        <TitleBar
-          title="V2EX"
-          titleColor="#000"
-          barStyle="dark-content"
-          backgroundColor="#FFF"
-        />
+        <View style={styles.titleBar}>
+          <Text>V2EX</Text>
+        </View>
         <ListView
           style={styles.container}
           initialListSize={20}
@@ -53,6 +46,11 @@ export default class Home extends Component {
 
   componentDidMount() {
     setTimeout(() => this._onRefresh(), 100);
+
+    const { regOnBack, navigator } = this.props;
+    regOnBack && regOnBack(() => {
+     navigator.pop();
+    });
   }
 
   _onRefresh() {
@@ -74,5 +72,20 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#EEE',
+  },
+  titleBar: {
+    height: 50,
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingTop: 20,
+    backgroundColor: 'rgba(255,255,255,0.9)',
+    shadowColor: '#666',
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.4,
+    shadowRadius: 1,
+    marginBottom: 2,
   }
 })

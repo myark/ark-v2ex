@@ -18,20 +18,20 @@ export default class App extends Component {
         initialRoute={{
           name: 'Home',
           component: Home,
-          params: {}
+          params: this.props
         }}
         configureScene={(route, routeStack) => {
-          // return Navigator.SceneConfigs.FloatFromBottom;
-          return {
-            ...Navigator.SceneConfigs.FloatFromBottom,
-            gestures: {
-              pop: {
-                ...Navigator.SceneConfigs.FloatFromBottom.gestures.pop,
-                snapVelocity: 8,
-                edgeHitWidth: 66, // 滑动区域高度
-              }
-            }
-          }
+          return Navigator.SceneConfigs.FloatFromBottom;
+          // return {
+          //   ...Navigator.SceneConfigs.FloatFromBottom,
+          //   gestures: {
+          //     pop: {
+          //       ...Navigator.SceneConfigs.FloatFromBottom.gestures.pop,
+          //       snapVelocity: 8,
+          //       edgeHitWidth: 66, // 滑动区域高度
+          //     }
+          //   }
+          // }
         }}
         renderScene={(route, navigator) => {
           let Cmp = route.component;
@@ -44,7 +44,7 @@ export default class App extends Component {
   componentDidMount() {
     const { setBottomBarStyle } = this.props;
     setBottomBarStyle && setBottomBarStyle({
-      backgroundColor: 'rgba(238,238,238,0.8)',
+      backgroundColor: '#EEE',
       color: '#333',
       borderColor: '#DDD',
     });

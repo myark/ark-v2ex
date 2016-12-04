@@ -18,15 +18,11 @@ export default class Topic extends Component {
 
   render() {
     return (
-      <ScrollView  style={styles.container}>
+      <ScrollView style={styles.container}>
         <Header {...this.props} />
         <Replies {...this.props} />
       </ScrollView >
     )
-  }
-
-  componentDidMount() {
-    console.log(this.props);
   }
 }
 

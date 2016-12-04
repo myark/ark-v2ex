@@ -91,11 +91,11 @@ const styles = StyleSheet.create({
   rightInfoDate: {
     flex: 1,
     textAlign: 'right',
-    fontSize: 10,
+    fontSize: 12,
     color: '#999'
   },
   content: {
-    fontSize: 12,
+    fontSize: 14,
     color: '#333'
   }
 })

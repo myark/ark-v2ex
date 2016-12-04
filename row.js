@@ -80,7 +80,8 @@ export default class Row extends Component {
       name: 'Topic',
       component: Topic,
       params: {
-        data
+        data,
+        navigator,
       }
     })
   }
