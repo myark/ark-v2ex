@@ -45,12 +45,22 @@ export default class Replies extends Component {
   }
 
   componentDidMount() {
-    setTimeout(() => {
-      this.setState({
-        data: require('./data.json'),
-        refreshing: false
+    setTimeout(() => this._onRefresh(), 100);
+  }
+
+  _onRefresh() {
+    this.setState({
+      refreshing: true,
+    });
+    const id = this.props.data.id;
+    fetch(`https://www.v2ex.com/api/replies/show.json?topic_id=${id}`)
+      .then((ret) => ret.json())
+      .then((data) => {
+        this.setState({
+          data,
+          refreshing: false
+        })
       })
-    }, 2000);
   }
 
   /**
