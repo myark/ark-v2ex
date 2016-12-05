@@ -15,20 +15,29 @@ export default class Home extends Component {
     this.ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
     this.state = {
       data: [],
-      refreshing: false
+      refreshing: false,
+      toggleTitleBar: false,
     }
   }
 
   render() {
     return (
       <View style={{flex:1}}>
-        <View style={styles.titleBar}>
-          <Text>V2EX</Text>
+        <View style={[styles.titleBar, {
+          height: this.state.toggleTitleBar ? 38 : 66
+        }]}>
+          <Text style={{
+            fontWeight: this.state.toggleTitleBar ? 'normal' : 'bold',
+            fontSize: this.state.toggleTitleBar ? 10 : 18
+          }}>V2EX</Text>
         </View>
         <ListView
           style={styles.container}
           initialListSize={20}
           enableEmptySections={true}
+          scrollEventThrottle={200}
+          onScroll={this._onScroll.bind(this)}
+          showsVerticalScrollIndicator={false}
           dataSource={this.ds.cloneWithRows(this.state.data)}
           renderRow={(data) => (
             <Row data={data} navigator={this.props.navigator} />
@@ -53,6 +62,15 @@ export default class Home extends Component {
     });
   }
 
+  _onScroll(evt) {
+    const event = evt['nativeEvent'];
+    this.setState({
+      toggleTitleBar: event['contentOffset']['y'] > 50
+    })
+  }
+  /**
+   * 刷新数据
+   */
   _onRefresh() {
     this.setState({
       refreshing: true
@@ -74,7 +92,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#EEE',
   },
   titleBar: {
-    height: 66,
+    // height: 66,
     alignItems: 'center',
     justifyContent: 'center',
     paddingTop: 20,
