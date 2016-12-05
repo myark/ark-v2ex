@@ -21,6 +21,7 @@ export default class Topic extends Component {
       <ScrollView
         scrollEventThrottle={200}
         onScroll={this._onScroll.bind(this)}
+        showsHorizontalScrollIndicator={false}
         style={styles.container}>
         <Header {...this.props} />
         <Replies {...this.props} />
@@ -29,9 +30,15 @@ export default class Topic extends Component {
   }
   
   _onScroll(evt) {
-    const y = evt['nativeEvent']['contentOffset'].y;
-    // 如果y < 10，则显示状态栏，否则隐藏
-    StatusBar.setHidden(y > 50, true);
+    const event = evt['nativeEvent'];
+    // 如果y < 50，则显示状态栏，否则隐藏
+    StatusBar.setHidden(event['contentOffset']['y'] > 50, true);
+    
+    // 如果超过底部，则加载更多
+    const _num = event['contentSize']['height'] - event['layoutMeasurement']['height'] - event['contentOffset']['y'];
+    if (_num < -50) {
+      console.log('上拉，加载更多评论');
+    }
   }
 
   componentWillUnmount() {
