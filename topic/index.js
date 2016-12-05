@@ -21,7 +21,7 @@ export default class Topic extends Component {
       <ScrollView
         scrollEventThrottle={200}
         onScroll={this._onScroll.bind(this)}
-        showsHorizontalScrollIndicator={false}
+        showsVerticalScrollIndicator={false}
         style={styles.container}>
         <Header {...this.props} />
         <Replies {...this.props} />
