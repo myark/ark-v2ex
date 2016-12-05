@@ -74,11 +74,11 @@ const styles = StyleSheet.create({
     backgroundColor: '#EEE',
   },
   titleBar: {
-    height: 50,
+    height: 66,
     alignItems: 'center',
     justifyContent: 'center',
     paddingTop: 20,
-    backgroundColor: 'rgba(255,255,255,0.9)',
+    backgroundColor: '#fff',
     shadowColor: '#666',
     shadowOffset: {
       width: 0,
