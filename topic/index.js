@@ -31,7 +31,7 @@ export default class Topic extends Component {
   _onScroll(evt) {
     const y = evt['nativeEvent']['contentOffset'].y;
     // 如果y < 10，则显示状态栏，否则隐藏
-    StatusBar.setHidden(y > 30, true);
+    StatusBar.setHidden(y > 50, true);
   }
 
   componentWillUnmount() {
