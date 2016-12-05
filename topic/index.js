@@ -18,11 +18,25 @@ export default class Topic extends Component {
 
   render() {
     return (
-      <ScrollView style={styles.container}>
+      <ScrollView
+        scrollEventThrottle={200}
+        onScroll={this._onScroll.bind(this)}
+        style={styles.container}>
         <Header {...this.props} />
         <Replies {...this.props} />
       </ScrollView >
     )
+  }
+  
+  _onScroll(evt) {
+    const y = evt['nativeEvent']['contentOffset'].y;
+    // 如果y < 10，则显示状态栏，否则隐藏
+    StatusBar.setHidden(y > 10, true);
+  }
+
+  componentWillUnmount() {
+    // 退出后显示状态栏（避免有时候未滚动直接退出
+    StatusBar.setHidden(false, true);
   }
 }
 
