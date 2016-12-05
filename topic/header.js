@@ -33,9 +33,11 @@ export default class Header extends Component {
           <Text style={styles.title}>{data['title']}</Text>
         </View>
 
-        <View style={styles.contentContainer}>
-          <Text style={styles.content}>{data['content']}</Text>
-        </View>
+        {data['content'].length > 0  ? (
+          <View style={styles.contentContainer}>
+            <Text style={styles.content}>{data['content']}</Text>
+          </View>
+        ) : null}
 
         <View style={styles.infoContainer}>
           <Text style={styles.infoNode} numberOfLines={1}>
