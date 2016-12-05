@@ -36,7 +36,8 @@ export default class Topic extends Component {
     
     // 如果超过底部，则加载更多
     const _num = event['contentSize']['height'] - event['layoutMeasurement']['height'] - event['contentOffset']['y'];
-    if (_num < -50) {
+    
+    if (event['contentSize']['height'] > event['layoutMeasurement']['height'] && _num < -50) {
       console.log('上拉，加载更多评论');
     }
   }
