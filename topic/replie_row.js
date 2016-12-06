@@ -22,7 +22,7 @@ export default class Row extends Component {
           style={styles.leftContainer}>
           <Image
             source={{
-              uri: 'http:' + data['member']['avatar_mini']
+              uri: 'http:' + data['member']['avatar_normal']
             }}
             style={styles.avatar}
             resizeMode='cover'
