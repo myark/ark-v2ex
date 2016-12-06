@@ -31,13 +31,22 @@ export default class Row extends Component {
 
         <View style={styles.rightContainer}>
           <View style={styles.rightInfoContainer}>
-            <Text style={styles.rightInfoName}>
-              <Text>#{floor} </Text>
-              <Text>@{data['member']['username']}</Text>
+            <Text style={styles.rightInfo}>
+              <Text>@{data['member']['username']} </Text>
+              <Text style={styles.rightInfoDate}>
+                <Icon name="ios-stopwatch-outline" />
+                <Text> {new Date(parseInt(data['created'] + '000')).toISOString().substr(5, 11).replace('-', '/').replace('T',' ')} </Text>
+              </Text>
+              {data['thanks'] > 0 ? (
+                <Text style={styles.rightInfoThanks}>
+                  <Icon name="ios-heart-outline" />
+                  <Text> {data['thanks']}</Text>
+                </Text>
+              ) : null}
             </Text>
-            <Text style={styles.rightInfoDate}>
-              <Icon name="ios-stopwatch-outline" />
-              <Text> {new Date(parseInt(data['created'] + '000')).toISOString().substr(5, 11).replace('-', '/').replace('T',' ')}</Text>
+
+            <Text style={styles.rightFloor}>
+              <Text>#{floor}</Text>
             </Text>
           </View>
 
@@ -83,18 +92,27 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
   },
-  rightInfoName: {
+  rightInfo: {
     flex: 1,
     fontSize: 12,
     color: '#666'
   },
   rightInfoDate: {
-    flex: 1,
+    fontSize: 10,
+    color: '#999',
+  },
+  rightInfoThanks: {
+    fontSize: 10,
+    color: '#999'
+  },
+  rightFloor: {
+    width: 50,
     textAlign: 'right',
-    fontSize: 12,
+    fontSize: 10,
     color: '#999'
   },
   content: {
+    lineHeight: 20,
     fontSize: 14,
     color: '#333'
   }
