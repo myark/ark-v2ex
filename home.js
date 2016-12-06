@@ -63,10 +63,10 @@ export default class Home extends Component {
   }
 
   _onScroll(evt) {
-    const event = evt['nativeEvent'];
-    this.setState({
-      toggleTitleBar: event['contentOffset']['y'] > 50
-    })
+    // const event = evt['nativeEvent'];
+    // this.setState({
+    //   toggleTitleBar: event['contentOffset']['y'] > 50
+    // })
   }
   /**
    * 刷新数据
