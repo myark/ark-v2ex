@@ -38,7 +38,7 @@ export default class Replies extends Component {
           </Text>
         </View>
         {this.state.data.map((_data, i) => (
-          <Row data={_data} key={i} />
+          <Row data={_data} key={i} floor={i + 1} />
         ))}
       </View>
     )

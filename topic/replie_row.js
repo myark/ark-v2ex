@@ -14,7 +14,7 @@ export default class Row extends Component {
   }
 
   render() {
-    const { data } = this.props;
+    const { data, floor } = this.props;
     return (
       <View style={styles.container}>
         <TouchableOpacity
@@ -32,8 +32,8 @@ export default class Row extends Component {
         <View style={styles.rightContainer}>
           <View style={styles.rightInfoContainer}>
             <Text style={styles.rightInfoName}>
-              <Icon name="ios-contact-outline" />
-              <Text> {data['member']['username']}</Text>
+              <Text>#{floor} </Text>
+              <Text>@{data['member']['username']}</Text>
             </Text>
             <Text style={styles.rightInfoDate}>
               <Icon name="ios-stopwatch-outline" />
