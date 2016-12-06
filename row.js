@@ -27,7 +27,7 @@ export default class Row extends Component {
           style={styles.avatarContainer}>
           <Image
             source={{
-              uri: 'http:' + data['member']['avatar_large']
+              uri: 'https:' + data['member']['avatar_large']
             }}
             style={styles.avatar}
             resizeMode='cover'
